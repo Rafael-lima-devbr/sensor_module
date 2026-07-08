@@ -16,9 +16,6 @@ void setup() {
   Serial.println("DS18B20 conectado!");
 }
 
-
-
-
 void loop () {
   sensorTemperatura.requestTemperatures();
   float temperatura = sensorTemperatura.getTempCByIndex(0);
