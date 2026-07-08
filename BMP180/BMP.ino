@@ -20,12 +20,8 @@ void setup() {
 void loop () {
   sensors_event_t evento;
   bmp.getEvent(&evento);
-  if (evento.pressure) {
-    float pressaoPa = evento.pressure * 100;
-    Serial.print("Pressão: ");
-    Serial.print(pressaoPa);
-    Serial.println(" Pa");
-  } else {
-    Serial.println("Erro ao ler impressão");
-  }
+  float pressaoPa = evento.pressure * 100;
+  Serial.print("Pressão: ");
+  Serial.print(pressaoPa);
+  Serial.println(" Pa");
 }
