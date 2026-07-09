@@ -7,8 +7,9 @@
 
 Adafruit_BMP085_Unified bmp(180);
 
-void setup() {
-  Serial.begin(115200);
+float pressao;
+
+void inicializar_pressao() {
   Wire.begin(BMP180_SDA_PIN, BMP180_SCL_PIN);
   while(!bmp.begin()) {
     Serial.println("Aguardando BMP180...");
@@ -17,11 +18,14 @@ void setup() {
   Serial.println("BMP180 conectado!");
 }
 
-void loop () {
+void medir_pressao () {
   sensors_event_t evento;
   bmp.getEvent(&evento);
-  float pressaoPa = evento.pressure * 100;
+  pressao = evento.pressure/10;
+}
+void mostrar_pressao () {
+  medir_pressao();
   Serial.print("Pressão: ");
-  Serial.print(pressaoPa);
-  Serial.println(" Pa");
+  Serial.print(pressao);
+  Serial.println(" kPa");
 }
