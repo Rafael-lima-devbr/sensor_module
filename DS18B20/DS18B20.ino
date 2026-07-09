@@ -3,11 +3,15 @@
 
 #define DS18B20_PIN 4
 
-OneWire onewire(DS18B20_PIN);
-DallasTemperature sensorTemperatura(&onewire);
+OneWire oneWire(DS18B20_PIN);
+DallasTemperature sensorTemperatura(&oneWire);
 
-void setup() {
-  Serial.begin(115200);
+
+float temperatura;
+
+void inicializar_temperatura() {
+  OneWire onewire(DS18B20_PIN);
+
   sensorTemperatura.begin();
   while(sensorTemperatura.getDeviceCount() == 0) {
     Serial.println("Aguardando DS18B20...");
@@ -16,11 +20,14 @@ void setup() {
   Serial.println("DS18B20 conectado!");
 }
 
-void loop () {
+void medir_temperatura () {
   sensorTemperatura.requestTemperatures();
-  float temperatura = sensorTemperatura.getTempCByIndex(0);
-  Serial.print("Temperatura: ");
-  Serial.print(temperatura);
-  Serial.print(" °C");
+  temperatura = sensorTemperatura.getTempCByIndex(0);
 }
 
+void mostrar_temperatura() {
+  medir_temperatura();
+  Serial.print("Temperatura: ");
+  Serial.print(temperatura);
+  Serial.println(" °C");
+}
