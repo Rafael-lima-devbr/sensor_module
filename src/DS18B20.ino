@@ -6,8 +6,6 @@
 OneWire oneWire(DS18B20_PIN);
 DallasTemperature sensorTemperatura(&oneWire);
 
-float temperatura, temperatura_filtrada;
-
 void inicializar_temperatura() {
   sensorTemperatura.begin();
   while(sensorTemperatura.getDeviceCount() == 0) {
