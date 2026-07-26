@@ -1,7 +1,6 @@
 #define HC_SR04_TRIG_PIN 18
 #define HC_SR04_ECHO_PIN 5
 
-float distancia;
 long duracao;
 
 void inicializar_distancia() {
