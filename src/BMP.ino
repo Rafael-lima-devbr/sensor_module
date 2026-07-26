@@ -7,8 +7,6 @@
 
 Adafruit_BMP085_Unified bmp(180);
 
-float pressao, pressao_filtrada;
-
 void inicializar_pressao() {
   Wire.begin(BMP180_SDA_PIN, BMP180_SCL_PIN);
   while(!bmp.begin()) {
