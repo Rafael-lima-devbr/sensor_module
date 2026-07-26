@@ -4,6 +4,10 @@ struct MediaMovel {
   int indice = 0;
 };
 
+float temperatura, temperatura_filtrada, pressao, pressao_filtrada, gas, gas_filtrado, distancia;
+bool temperatura_leve, temperatura_critica, pressao_leve, pressao_critica, gas_leve, gas_critico, distancia_leve, distancia_critica;
+String estado;
+
 void setup() {
   Serial.begin(115200);
   inicializar_pressao();
